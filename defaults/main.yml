@@ -1,0 +1,3 @@
+---
+rpmfusion_free_package_state: present
+rpmfusion_nonfree_package_state: absent

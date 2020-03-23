@@ -1,0 +1,27 @@
+---
+galaxy_info:
+  role_name: rpmfusion
+  author: Janne K
+  description: Configures RPM Fusion free and nonfree repositories
+  license: license (MIT)
+  min_ansible_version: 2.9
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+    - name: Fedora
+      versions:
+        - 31
+  galaxy_tags:
+    - centos
+    - fedora
+    - redhat
+    - repo
+    - repository
+    - rhel
+    - rpmfusion
+    - system
+
+dependencies:
+  - role: 0x022b.epel

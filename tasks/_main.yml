@@ -1,0 +1,44 @@
+---
+- name: Include operating system specific variables
+  include_vars: "{{ rpmfusion_os_vars }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+      paths:
+        - vars
+      skip: true
+  loop_control:
+    loop_var: rpmfusion_os_vars
+
+- name: Import RPM Fusion free repository signing key
+  rpm_key:
+    key: "{{ rpmfusion_gpg_url_template.format(rpmfusion_distribution, 'free') }}"
+    state: present
+
+- name: Import RPM Fusion nonfree repository signing key
+  rpm_key:
+    key: "{{ rpmfusion_gpg_url_template.format(rpmfusion_distribution, 'nonfree') }}"
+    state: present
+
+- name: Configure RPM Fusion free repository
+  package:
+    name: |
+      {% if rpmfusion_free_package_state == 'present' %}
+      {{ rpmfusion_rpm_url_template.format(rpmfusion_distribution, 'free') }}
+      {% else %}
+      {{ rpmfusion_package_template.format('free') }}
+      {% endif %}
+    state: "{{ rpmfusion_free_package_state }}"
+
+- name: Configure RPM Fusion nonfree repository
+  package:
+    name: |
+      {% if rpmfusion_nonfree_package_state == 'present' %}
+      {{ rpmfusion_rpm_url_template.format(rpmfusion_distribution, 'nonfree') }}
+      {% else %}
+      {{ rpmfusion_package_template.format('nonfree') }}
+      {% endif %}
+    state: "{{ rpmfusion_nonfree_package_state }}"

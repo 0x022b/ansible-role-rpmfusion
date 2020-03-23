@@ -1,0 +1,5 @@
+---
+- name: Include tasks for supported operating systems
+  include_tasks: _main.yml
+  when:
+    - ansible_os_family == "RedHat"

@@ -1,0 +1,4 @@
+---
+rpmfusion_gpg_url_template: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-{1}-{0}-{{ ansible_distribution_major_version }}
+rpmfusion_package_template: rpmfusion-{0}-release
+rpmfusion_rpm_url_template: https://download1.rpmfusion.org/{1}/{0}/rpmfusion-{1}-release-{{ ansible_distribution_major_version }}.noarch.rpm
