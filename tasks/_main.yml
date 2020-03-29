@@ -9,7 +9,7 @@
         - "{{ ansible_os_family | lower }}.yml"
       paths:
         - vars
-      skip: true
+      skip: yes
   loop_control:
     loop_var: rpmfusion_os_vars
 
