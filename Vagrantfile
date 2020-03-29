@@ -4,6 +4,7 @@
 boxes = [
   { :name => "centos-7", :box => "centos/7", :box_version => "1905.1" },
   { :name => "centos-8", :box => "centos/8", :box_version => "1905.1" },
+  { :name => "fedora-31", :box => "fedora/31-cloud-base", :box_version => "31.20191023.0" },
 ]
 
 provisioner = ARGV.length == 1 ? boxes.last[:name] \
