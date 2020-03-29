@@ -10,6 +10,11 @@ provisioner = ARGV.length == 1 ? boxes.last[:name] \
   : ARGV.drop(1).select { |a| !a.start_with?("--") }.last
 
 Vagrant.configure("2") do |config|
+  config.vm.provider "libvirt" do |libvirt|
+    libvirt.cpus = 2
+    libvirt.memory = 1024
+  end
+
   boxes.each do |opts|
     config.vm.define opts[:name] do |machine|
       machine.vm.box = opts[:box]
