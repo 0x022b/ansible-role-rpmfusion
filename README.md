@@ -33,7 +33,7 @@ Variables to control the state of free and nonfree repository packages.
 
 ## Versioning
 
-This project uses [semantic versioning][semver].
+This project uses [Semantic Versioning][semver].
 
 ## License
 
