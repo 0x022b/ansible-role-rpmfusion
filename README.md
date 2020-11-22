@@ -1,5 +1,7 @@
 # Ansible Role: RPM Fusion
 
+![Ansible Galaxy](https://github.com/0x022b/ansible-role-rpmfusion/workflows/Ansible%20Galaxy/badge.svg)
+
 Ansible role that configures [RPM Fusion][rpmfusion] free and nonfree repositories.
 
 ## Requirements
